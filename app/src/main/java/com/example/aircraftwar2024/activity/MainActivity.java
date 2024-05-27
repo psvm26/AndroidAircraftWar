@@ -1,4 +1,4 @@
-package com.example.aircraftwar2024;
+package com.example.aircraftwar2024.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.example.aircraftwar2024.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,17 +28,12 @@ public class MainActivity extends AppCompatActivity {
         hasNotMusicButton.setChecked(true);
         hasMusicButton.setOnCheckedChangeListener((buttonView, isChecked) -> this.hasMusic = isChecked);
 
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(view.getId() == R.id.start_button){
-                    Intent intent = new Intent(MainActivity.this, OfflineActivity.class);
-                    intent.putExtra("hasMusic", MainActivity.this.hasMusic);
-                    Log.d("RadioGroupSelection", "Selected RadioButton: " + MainActivity.this.hasMusic);
-                    startActivity(intent);
-            }
-        }
-        });
+        startButton.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, OfflineActivity.class);
+            intent.putExtra("hasMusic", MainActivity.this.hasMusic);
+            Log.d("RadioGroupSelection", "Selected RadioButton: " + MainActivity.this.hasMusic);
+            startActivity(intent);
+    });
     }
 
 }
