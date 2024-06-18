@@ -106,8 +106,10 @@ public abstract class BaseGame extends SurfaceView implements SurfaceHolder.Call
 
     protected int enemyMaxNumber = 5;
 
-    private boolean gameOverFlag = false;
-    private int score = 0;
+    public static boolean gameOverFlag = false;
+    public static int score = 0;
+    public static boolean allOverFlag = false;
+    public static int enemyScore = 0;
 
 
     /**
@@ -176,6 +178,7 @@ public abstract class BaseGame extends SurfaceView implements SurfaceHolder.Call
         bossBgm = new MyMediaPlayer(context, R.raw.bgm_boss,true,hasMusic);
         bgm.start();
     }
+
     private void heroShootAction() {
         // 英雄射击
         heroBullets.addAll(heroAircraft.shoot());
@@ -526,6 +529,7 @@ public abstract class BaseGame extends SurfaceView implements SurfaceHolder.Call
         paint.setColor(Color.RED);
         paint.setTextSize(50);
         canvas.drawText("SCORE:"+Integer.toString(score),10,50,paint);
+        canvas.drawText("ENEMYSCORE:"+Integer.toString(enemyScore),500,50,paint);
         canvas.drawText("LIFE:"+Integer.toString(heroAircraft.getHp()),10,100,paint);
     }
 
@@ -555,5 +559,12 @@ public abstract class BaseGame extends SurfaceView implements SurfaceHolder.Call
             action();
             draw();
         }
+    }
+
+    public static void init() {
+        score = 0;
+        enemyScore = 0;
+        gameOverFlag = false;
+        allOverFlag = false;
     }
 }

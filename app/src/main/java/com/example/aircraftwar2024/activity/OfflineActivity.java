@@ -44,6 +44,7 @@ public class OfflineActivity extends AppCompatActivity implements View.OnClickLi
         }
         intent.putExtra("gameType",gameType);
         intent.putExtra("hasMusic",hasMusic);
+        intent.putExtra("isOnline", false);
         Log.d("gameTypeSelection", "Selected GameType: " + gameType);
         startActivity(intent);
     }

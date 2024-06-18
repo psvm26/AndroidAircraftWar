@@ -26,6 +26,7 @@ public class GameActivity extends AppCompatActivity {
 
     private int gameType = 0;
     private boolean hasMusic = false;
+    private boolean isOnline = false;
     public static int screenWidth,screenHeight;
     public Handler handle;
 
@@ -40,6 +41,7 @@ public class GameActivity extends AppCompatActivity {
         if(getIntent() != null){
             gameType = getIntent().getIntExtra("gameType",1);
             hasMusic = getIntent().getBooleanExtra("hasMusic",false);
+            isOnline = getIntent().getBooleanExtra("isOnline", false);
         }
         Log.d("gameTypeGet", "Geted GameType: " + gameType);
         /*TODO:根据用户选择的难度加载相应的游戏界面*/
@@ -101,8 +103,15 @@ public class GameActivity extends AppCompatActivity {
             switch (msg.what) {
                 case 1:
                     Toast.makeText(GameActivity.this,"GameOver",Toast.LENGTH_SHORT).show();
-                    getname((int)msg.obj);
+                    if(!isOnline) {
+                        getname((int)msg.obj);
+                    } else {
+                        Intent intent = new Intent(GameActivity.this, OnlineResultActivity.class);
+                        startActivity(intent);
+                        ActivityManager.finishActivity();
+                    }
                     break;
+                case 3:
             }
         }
     }

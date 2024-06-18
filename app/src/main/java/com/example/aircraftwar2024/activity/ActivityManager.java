@@ -6,6 +6,8 @@ import android.content.Context;
 import android.util.Log;
 
 import java.util.Stack;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ActivityManager {
     private static Stack<Activity> activityStack;

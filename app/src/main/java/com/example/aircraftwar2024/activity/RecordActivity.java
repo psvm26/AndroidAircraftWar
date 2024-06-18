@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.aircraftwar2024.R;
 import com.example.aircraftwar2024.dao.Player;
 import com.example.aircraftwar2024.dao.PlayerDaoImpl;
+import com.example.aircraftwar2024.game.BaseGame;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -74,6 +75,7 @@ private PlayerDaoImpl playerDao;
         String difficulty = (gameType == 1) ? "简单" : (gameType == 2) ? "普通" : "困难";
         gameTypeTextView.setText(difficulty);
         returnButton.setOnClickListener(view -> {
+            BaseGame.init();
             for (int i = 0; i < 2; i++) {
                 ActivityManager.finishActivity();
             }
