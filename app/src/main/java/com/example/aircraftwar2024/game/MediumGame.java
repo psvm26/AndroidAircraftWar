@@ -6,8 +6,8 @@ import android.os.Handler;
 import com.example.aircraftwar2024.ImageManager;
 
 public class MediumGame extends BaseGame{
-    public MediumGame(Context context, Handler handler, boolean hasMusic) {
-        super(context,handler,hasMusic);
+    public MediumGame(Context context, Handler handler, boolean hasMusic, boolean isOnline) {
+        super(context,handler,hasMusic, isOnline);
         this.backGround = ImageManager.BACKGROUND2_IMAGE;
         this.enemyMaxNumber = 3;
         this.heroShootCycle = 9;

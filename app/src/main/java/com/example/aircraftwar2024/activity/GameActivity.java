@@ -47,11 +47,11 @@ public class GameActivity extends AppCompatActivity {
         /*TODO:根据用户选择的难度加载相应的游戏界面*/
         BaseGame baseGameView = null;
         if (gameType == 1) {
-            baseGameView = new EasyGame(this,handle,hasMusic);
+            baseGameView = new EasyGame(this,handle, hasMusic, isOnline);
         } else if (gameType == 2) {
-            baseGameView = new MediumGame(this,handle,hasMusic);
+            baseGameView = new MediumGame(this,handle, hasMusic, isOnline);
         }else {
-            baseGameView = new HardGame(this,handle,hasMusic);
+            baseGameView = new HardGame(this,handle, hasMusic, isOnline);
         }
         setContentView(baseGameView);
     }

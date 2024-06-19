@@ -141,14 +141,16 @@ public abstract class BaseGame extends SurfaceView implements SurfaceHolder.Call
 
     //音乐控制
     private boolean hasMusic = false;
+    private boolean isOnline = false;
     private MyMediaPlayer bgm;
     private MyMediaPlayer bossBgm;
     private MySoundPool mysp;
 
-    public BaseGame(Context context, Handler handler, boolean hasMusic){
+    public BaseGame(Context context, Handler handler, boolean hasMusic, boolean isOnline){
         super(context);
         this.handler = handler;
         this.hasMusic = hasMusic;
+        this.isOnline = isOnline;
 
         mbLoop = true;
         mPaint = new Paint();  //设置画笔
@@ -529,7 +531,9 @@ public abstract class BaseGame extends SurfaceView implements SurfaceHolder.Call
         paint.setColor(Color.RED);
         paint.setTextSize(50);
         canvas.drawText("SCORE:"+Integer.toString(score),10,50,paint);
-        canvas.drawText("ENEMYSCORE:"+Integer.toString(enemyScore),500,50,paint);
+        if(isOnline) {
+            canvas.drawText("ENEMYSCORE:"+Integer.toString(enemyScore),500,50,paint);
+        }
         canvas.drawText("LIFE:"+Integer.toString(heroAircraft.getHp()),10,100,paint);
     }
 
